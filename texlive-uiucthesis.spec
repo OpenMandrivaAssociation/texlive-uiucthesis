@@ -6,7 +6,7 @@
 # catalog-version 2.25
 Name:		texlive-uiucthesis
 Version:	2.25
-Release:	9
+Release:	10
 Summary:	UIUC thesis class
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/uiucthesis
