@@ -1,19 +1,13 @@
-# revision 15878
-# category Package
-# catalog-ctan /macros/latex/contrib/uiucthesis
-# catalog-date 2007-01-20 15:20:16 +0100
-# catalog-license lppl
-# catalog-version 2.25
 Name:		texlive-uiucthesis
-Version:	2.25
-Release:	12
+Version:	15878
+Release:	1
 Summary:	UIUC thesis class
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/uiucthesis
 License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/uiucthesis.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/uiucthesis.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/uiucthesis.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/uiucthesis.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/uiucthesis.doc.r%{version}.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/uiucthesis.source.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -25,12 +19,12 @@ described in the University's Handbook for Graduate Students
 Preparing to Deposit.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -46,23 +40,11 @@ Preparing to Deposit.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Thu Jan 05 2012 Paulo Andrade <pcpa@mandriva.com.br> 2.25-2
-+ Revision: 757245
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 2.25-1
-+ Revision: 719835
-- texlive-uiucthesis
-- texlive-uiucthesis
-- texlive-uiucthesis
-
